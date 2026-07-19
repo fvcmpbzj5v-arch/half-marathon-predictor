@@ -587,7 +587,24 @@ footer{
         grid-template-columns:1fr;
     }
 }
+
+.record-icon svg{
+    width:24px;
+    height:24px;
+    color:#2874ef;
+    stroke-width:2;
+}
+
+.condition-name svg{
+    width:18px;
+    height:18px;
+    color:#2874ef;
+    stroke-width:2;
+    flex-shrink:0;
+}
+
 </style>
+<script src="https://unpkg.com/lucide@1.24.0/dist/umd/lucide.min.js"></script>
 </head>
 
 <body>
@@ -641,14 +658,7 @@ data-record="1">
 <div class="record-header">
 
 <div class="record-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24">
-<circle cx="14" cy="4.5" r="2"></circle>
-<path d="M10.5 9.5l3-2 2.5 2.5 3 .5"></path>
-<path d="M12.5 8.5l-2 4 3 2"></path>
-<path d="M10.5 12.5l-3 3.5"></path>
-<path d="M13.5 14.5l3.5 4"></path>
-<path d="M8.5 18.5h-3"></path>
-</svg>
+    <i data-lucide="footprints"></i>
 </div>
 
 <select
@@ -735,14 +745,7 @@ data-record="2">
 <div class="record-header">
 
 <div class="record-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24">
-<circle cx="14" cy="4.5" r="2"></circle>
-<path d="M10.5 9.5l3-2 2.5 2.5 3 .5"></path>
-<path d="M12.5 8.5l-2 4 3 2"></path>
-<path d="M10.5 12.5l-3 3.5"></path>
-<path d="M13.5 14.5l3.5 4"></path>
-<path d="M8.5 18.5h-3"></path>
-</svg>
+    <i data-lucide="footprints"></i>
 </div>
 
 <select
@@ -831,14 +834,7 @@ data-record="3">
 <div class="record-header">
 
 <div class="record-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24">
-<circle cx="14" cy="4.5" r="2"></circle>
-<path d="M10.5 9.5l3-2 2.5 2.5 3 .5"></path>
-<path d="M12.5 8.5l-2 4 3 2"></path>
-<path d="M10.5 12.5l-3 3.5"></path>
-<path d="M13.5 14.5l3.5 4"></path>
-<path d="M8.5 18.5h-3"></path>
-</svg>
+    <i data-lucide="footprints"></i>
 </div>
 
 <select
@@ -909,18 +905,9 @@ aria-label="記録3を消去">
 条件（任意）
 </h2>
 
-<div class="condition-grid">
-
-<div class="condition-box">
-
 <div class="condition-name">
-<span class="condition-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24">
-<path d="M10 14.8V5a3 3 0 0 1 6 0v9.8a5 5 0 1 1-6 0z"></path>
-<line x1="13" y1="6" x2="13" y2="16"></line>
-</svg>
-</span>
-気温
+    <i data-lucide="thermometer"></i>
+    気温
 </div>
 
 <div class="condition-input-wrap">
@@ -941,17 +928,9 @@ max="50">
 
 </div>
 
-<div class="condition-box">
-
 <div class="condition-name">
-<span class="condition-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24">
-<path d="M3 19l5.5-9 3.5 5 2.5-4 6.5 8z"></path>
-<path d="M15 7h5"></path>
-<path d="M18 4l2 3-2 3"></path>
-</svg>
-</span>
-累積上昇
+    <i data-lucide="mountain"></i>
+    累積上昇
 </div>
 
 <div class="condition-input-wrap">
@@ -1516,6 +1495,7 @@ function(){
     });
 }
 );
+lucide.createIcons();
 </script>
 
 </body>
