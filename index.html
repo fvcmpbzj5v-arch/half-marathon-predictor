@@ -1169,6 +1169,18 @@ document.getElementById("predictedTime");
 const predictedPace =
 document.getElementById("predictedPace");
 
+const confidenceValue =
+
+document.getElementById("confidenceValue");
+
+const confidenceStars =
+
+document.getElementById("confidenceStars");
+
+const confidenceMessage =
+
+document.getElementById("confidenceMessage");
+
 const errorMessage =
 document.getElementById("errorMessage");
 
@@ -1843,11 +1855,23 @@ function(){
     finalPrediction /
     (halfDistance / 1000);
 
-    predictedPace.textContent =
+   predictedPace.textContent =
     "平均ペース " +
     formatPace(pace);
 
-    result.style.display =
+const confidence =
+calculateConfidence(records);
+
+confidenceValue.textContent =
+confidence.score + "点";
+
+confidenceStars.textContent =
+confidence.stars;
+
+confidenceMessage.textContent =
+confidence.message;
+
+result.style.display =
     "block";
 
     result.scrollIntoView({
