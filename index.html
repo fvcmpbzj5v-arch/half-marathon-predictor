@@ -985,7 +985,7 @@ id="result"
 aria-live="polite">
 
 <p class="result-label">
-予測タイム（暫定）
+予測タイム（総合）
 </p>
 
 <p
@@ -1000,9 +1000,34 @@ id="predictedPace">
 ―
 </p>
 
+<div class="confidence-box">
+
+<p class="confidence-label">
+予測信頼度
+</p>
+
+<p
+class="confidence-value"
+id="confidenceValue">
+―
+</p>
+
+<p
+class="confidence-stars"
+id="confidenceStars">
+☆☆☆☆☆
+</p>
+
+<p
+class="confidence-message"
+id="confidenceMessage">
+記録を入力すると信頼度を判定します。
+</p>
+
+</div>
+
 <p class="result-note">
-現在はRiegel式をもとにした暫定予測です。<br>
-今後、複数記録・気温・コース・ランナータイプによる補正を追加します。
+入力された記録・気温・高低差をもとに予測しています。
 </p>
 
 </section>
