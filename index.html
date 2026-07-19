@@ -597,7 +597,11 @@ footer{
     stroke-width:2;
     flex-shrink:0;
 }
-
+.title-runner-icon{
+    display:block;
+    width:28px;
+    height:28px;
+}
 </style>
 <script src="https://unpkg.com/lucide@1.24.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -610,8 +614,11 @@ footer{
 
 <div class="header-title">
 
-<div class="logo">
-🏃
+<div class="logo" aria-hidden="true">
+<img
+src="icons/runner.svg"
+alt=""
+class="title-runner-icon">
 </div>
 
 <div class="header-text">
