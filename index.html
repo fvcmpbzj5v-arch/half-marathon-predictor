@@ -1187,6 +1187,21 @@ function formatRoadTimeInput(value){
 
 }
 
+document
+.querySelectorAll(".time-input")
+.forEach(function(input){
+
+    input.addEventListener(
+    "input",
+    function(){
+
+        input.value =
+        formatRoadTimeInput(input.value);
+    }
+    );
+
+});
+
 function parseTime(value){
 
     const cleanValue =
