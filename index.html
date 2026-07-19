@@ -1164,6 +1164,30 @@ function formatRoadTimeInput(value){
         return digits;
 
     }
+    
+    function formatTrackTimeInput(value){
+
+    const digits = value.replace(/\D/g, "");
+
+    if(digits.length <= 2){
+        return digits;
+    }
+
+    // 例：1065 → 10.65
+    if(digits.length <= 4){
+        return digits.slice(0,-2)
+            + "."
+            + digits.slice(-2);
+    }
+
+    // 例：95832 → 9:58.32
+    // 例：143255 → 14:32.55
+    return digits.slice(0,-4)
+        + ":"
+        + digits.slice(-4,-2)
+        + "."
+        + digits.slice(-2);
+}
 
     if(digits.length <= 4){
 
