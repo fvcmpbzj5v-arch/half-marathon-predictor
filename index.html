@@ -717,8 +717,8 @@ aria-label="記録1を消去">
 
 </div>
 
-<p class="example">
-例）40:15、1:29:30
+<p class="time-input-example">
+    例）455525 → 45:55.25
 </p>
 
 </section>
@@ -1216,6 +1216,62 @@ document
     }
     );
 
+});
+
+function updateTimeExample(card){
+
+    const distanceSelect =
+    card.querySelector(".distance-select");
+
+    const example =
+    card.querySelector(".time-input-example");
+
+    if(!distanceSelect || !example){
+        return;
+    }
+
+    const selectedText =
+    distanceSelect.options[
+        distanceSelect.selectedIndex
+    ].textContent;
+
+    if(selectedText.includes("ハーフ")){
+
+        example.textContent =
+        "例）12930 → 1:29:30";
+
+    }else if(selectedText.includes("フル")){
+
+        example.textContent =
+        "例）31158 → 3:11:58";
+
+    }else{
+
+        example.textContent =
+        "例）455525 → 45:55.25";
+    }
+}
+
+document
+.querySelectorAll(".record-card")
+.forEach(function(card){
+
+    const distanceSelect =
+    card.querySelector(".distance-select");
+
+    if(!distanceSelect){
+        return;
+    }
+
+    distanceSelect.addEventListener(
+        "change",
+        function(){
+
+            updateTimeExample(card);
+        }
+    );
+
+    updateTimeExample(card);
 });
 
 function parseTime(value){
