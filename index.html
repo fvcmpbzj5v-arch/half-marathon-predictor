@@ -189,7 +189,34 @@ main{
     background:#edf4ff;
     color:#2874ef;
 
-    font-size:20px;
+    .record-icon svg{
+    width:24px;
+    height:24px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.9;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.condition-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:21px;
+    height:21px;
+    color:#2874ef;
+}
+
+.condition-icon svg{
+    width:100%;
+    height:100%;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
 }
 
 .distance-select{
@@ -613,8 +640,15 @@ data-record="1">
 
 <div class="record-header">
 
-<div class="record-icon">
-🏃
+<div class="record-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24">
+<circle cx="14" cy="4.5" r="2"></circle>
+<path d="M10.5 9.5l3-2 2.5 2.5 3 .5"></path>
+<path d="M12.5 8.5l-2 4 3 2"></path>
+<path d="M10.5 12.5l-3 3.5"></path>
+<path d="M13.5 14.5l3.5 4"></path>
+<path d="M8.5 18.5h-3"></path>
+</svg>
 </div>
 
 <select
@@ -700,8 +734,15 @@ data-record="2">
 
 <div class="record-header">
 
-<div class="record-icon">
-🏃
+<div class="record-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24">
+<circle cx="14" cy="4.5" r="2"></circle>
+<path d="M10.5 9.5l3-2 2.5 2.5 3 .5"></path>
+<path d="M12.5 8.5l-2 4 3 2"></path>
+<path d="M10.5 12.5l-3 3.5"></path>
+<path d="M13.5 14.5l3.5 4"></path>
+<path d="M8.5 18.5h-3"></path>
+</svg>
 </div>
 
 <select
@@ -789,8 +830,15 @@ data-record="3">
 
 <div class="record-header">
 
-<div class="record-icon">
-🏃
+<div class="record-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24">
+<circle cx="14" cy="4.5" r="2"></circle>
+<path d="M10.5 9.5l3-2 2.5 2.5 3 .5"></path>
+<path d="M12.5 8.5l-2 4 3 2"></path>
+<path d="M10.5 12.5l-3 3.5"></path>
+<path d="M13.5 14.5l3.5 4"></path>
+<path d="M8.5 18.5h-3"></path>
+</svg>
 </div>
 
 <select
@@ -866,7 +914,12 @@ aria-label="記録3を消去">
 <div class="condition-box">
 
 <div class="condition-name">
-<span>🌡️</span>
+<span class="condition-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24">
+<path d="M10 14.8V5a3 3 0 0 1 6 0v9.8a5 5 0 1 1-6 0z"></path>
+<line x1="13" y1="6" x2="13" y2="16"></line>
+</svg>
+</span>
 気温
 </div>
 
@@ -891,7 +944,13 @@ max="50">
 <div class="condition-box">
 
 <div class="condition-name">
-<span>⛰️</span>
+<span class="condition-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24">
+<path d="M3 19l5.5-9 3.5 5 2.5-4 6.5 8z"></path>
+<path d="M15 7h5"></path>
+<path d="M18 4l2 3-2 3"></path>
+</svg>
+</span>
 累積上昇
 </div>
 
