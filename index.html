@@ -1581,6 +1581,124 @@ function calculatePrediction(record){
     return basePrediction;
 }
 
+function calculateConfidence(records){
+
+    let score = 0;
+
+    const recordCount = records.length;
+
+    if(recordCount >= 1){
+        score += 20;
+    }
+
+    if(recordCount >= 2){
+        score += 20;
+    }
+
+    if(recordCount >= 3){
+        score += 20;
+    }
+
+    const has5kmOrMore = records.some(function(record){
+        return record.distance >= 5000;
+    });
+
+    const has10kmOrMore = records.some(function(record){
+        return record.distance >= 10000;
+    });
+
+    const hasHalf = records.some(function(record){
+        return record.distance === 21097.5;
+    });
+
+    const hasFull = records.some(function(record){
+        return record.distance === 42195;
+    });
+
+    if(has5kmOrMore){
+        score += 15;
+    }
+
+    if(has10kmOrMore){
+        score += 15;
+    }
+
+    if(hasHalf){
+        score += 20;
+    }
+
+    if(hasFull){
+        score += 20;
+    }
+
+    const temperatureInput =
+    document.getElementById("temperature");
+
+    const elevationInput =
+    document.getElementById("elevation");
+
+    if(
+        temperatureInput &&
+        temperatureInput.value !== ""
+    ){
+        score += 5;
+    }
+
+    if(
+        elevationInput &&
+        elevationInput.value !== ""
+    ){
+        score += 5;
+    }
+
+    score = Math.min(score, 100);
+
+    let stars = "";
+    let message = "";
+
+    if(score >= 90){
+
+        stars = "★★★★★";
+
+        message =
+        "複数の実績とレース条件から算出した高精度な予測です。";
+
+    }else if(score >= 75){
+
+        stars = "★★★★☆";
+
+        message =
+        "比較的信頼できる予測です。";
+
+    }else if(score >= 55){
+
+        stars = "★★★☆☆";
+
+        message =
+        "十分予測できますが、複数の記録またはコース条件があるとさらに精度が向上します。";
+
+    }else if(score >= 40){
+
+        stars = "★★☆☆☆";
+
+        message =
+        "もう1〜2件記録を入力すると予測精度が向上します。";
+
+    }else{
+
+        stars = "★☆☆☆☆";
+
+        message =
+        "記録を追加すると予測精度が向上します。";
+
+    }
+
+    return {
+        score:score,
+        stars:stars,
+        message:message
+    };
+}
 
 predictButton.addEventListener(
 "click",
