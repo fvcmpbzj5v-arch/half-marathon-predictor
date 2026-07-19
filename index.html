@@ -1136,23 +1136,42 @@ function(){
 
 
 document
-.querySelectorAll(".clear-button")
-.forEach(function(button){
+.querySelectorAll(".time-input")
+.forEach(function(input){
 
-    button.addEventListener(
-    "click",
+    input.addEventListener(
+    "input",
     function(){
 
         const card =
-        button.closest(".record-card");
+        input.closest(".record-card");
 
-        const input =
-        card.querySelector(".time-input");
+        const distanceSelect =
+        card.querySelector(".distance-select");
 
-        input.value = "";
-        input.focus();
+        const selectedText =
+        distanceSelect.options[
+            distanceSelect.selectedIndex
+        ].textContent;
+
+        const isHalfOrFull =
+        selectedText.includes("ハーフ") ||
+        selectedText.includes("フル");
+
+        if(isHalfOrFull){
+
+            input.value =
+            formatRoadTimeInput(input.value);
+
+        }else{
+
+            input.value =
+            formatTrackTimeInput(input.value);
+
+        }
     }
     );
+
 });
 
 function formatRoadTimeInput(value){
@@ -1249,7 +1268,23 @@ function parseTime(value){
 
     let totalSeconds = 0;
 
-    if(parts.length === 2){
+    // 例：10.65
+    if(parts.length === 1){
+
+        const seconds = parts[0];
+
+        if(
+            seconds < 0 ||
+            seconds >= 60
+        ){
+            return null;
+        }
+
+        totalSeconds = seconds;
+    }
+
+    // 例：9:58.32 または 40:15
+    else if(parts.length === 2){
 
         const minutes = parts[0];
         const seconds = parts[1];
@@ -1267,6 +1302,7 @@ function parseTime(value){
         seconds;
     }
 
+    // 例：1:29:30
     else if(parts.length === 3){
 
         const hours = parts[0];
