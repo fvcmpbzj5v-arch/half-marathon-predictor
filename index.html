@@ -349,7 +349,6 @@ main{
 
 .condition-box{
     padding:13px 12px;
-
     border:1px solid #e0e6ef;
     border-radius:10px;
 }
@@ -358,14 +357,10 @@ main{
     display:flex;
     align-items:center;
     gap:6px;
-
     margin-bottom:10px;
-
     color:#526079;
-
-    font-size:0.74rem;
+    font-size:0.7rem;
     font-weight:700;
-
     white-space:nowrap;
 }
 
@@ -586,9 +581,6 @@ footer{
         font-size:1.02rem;
     }
 
-    .condition-grid{
-        grid-template-columns:1fr;
-    }
 }
 
 .record-icon svg{
@@ -908,9 +900,13 @@ aria-label="記録3を消去">
 条件（任意）
 </h2>
 
+<div class="condition-grid">
+
+<div class="condition-box">
+
 <div class="condition-name">
-    <i data-lucide="thermometer"></i>
-    気温
+<i data-lucide="thermometer"></i>
+気温
 </div>
 
 <div class="condition-input-wrap">
@@ -923,17 +919,18 @@ value="20"
 min="-10"
 max="50">
 
-<span class="unit">
-℃
-</span>
+<span class="unit">℃</span>
 
 </div>
 
 </div>
+
+
+<div class="condition-box">
 
 <div class="condition-name">
-    <i data-lucide="mountain"></i>
-    高低差（累積上昇）
+<i data-lucide="mountain"></i>
+累積上昇（高低差）
 </div>
 
 <div class="condition-input-wrap">
@@ -946,9 +943,7 @@ value="60"
 min="0"
 max="3000">
 
-<span class="unit">
-m
-</span>
+<span class="unit">m</span>
 
 </div>
 
