@@ -637,6 +637,127 @@ footer{
     width:28px;
     height:28px;
 }
+
+.runner-type-card{
+    margin-top:24px;
+    padding:22px;
+    background:#ffffff;
+    border:1px solid #dfe6f1;
+    border-radius:18px;
+    box-shadow:
+    0 8px 24px rgba(30,70,120,0.08);
+}
+
+.runner-title{
+    margin:0 0 18px;
+    font-size:15px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.runner-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.runner-icon{
+    width:64px;
+    height:64px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#eef4ff;
+    font-size:32px;
+}
+
+.runner-name{
+    margin:0 0 7px;
+    font-size:24px;
+    font-weight:800;
+    color:#172033;
+}
+
+.runner-description{
+    margin:0;
+    font-size:14px;
+    line-height:1.7;
+    color:#465166;
+}
+
+.runner-stats{
+    display:grid;
+    grid-template-columns:
+    repeat(3,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.runner-stat{
+    padding:14px 6px;
+    text-align:center;
+    background:#ffffff;
+    border:1px solid #dfe4ec;
+    border-radius:12px;
+}
+
+.stat-label{
+    margin:0 0 8px;
+    font-size:13px;
+    font-weight:700;
+    color:#252b36;
+}
+
+.stat-value{
+    margin:0;
+    font-size:14px;
+    font-weight:800;
+    color:#16a36a;
+}
+
+@media(max-width:430px){
+
+    .runner-type-card{
+        padding:18px 14px;
+    }
+
+    .runner-header{
+        gap:12px;
+    }
+
+    .runner-icon{
+        width:56px;
+        height:56px;
+        font-size:28px;
+    }
+
+    .runner-name{
+        font-size:21px;
+    }
+
+    .runner-description{
+        font-size:13px;
+    }
+
+    .runner-stats{
+        gap:7px;
+    }
+
+    .runner-stat{
+        padding:12px 3px;
+    }
+
+    .stat-label{
+        font-size:12px;
+    }
+
+    .stat-value{
+        font-size:12px;
+    }
+}
+
 </style>
 <script src="https://unpkg.com/lucide@1.24.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -1058,6 +1179,79 @@ class="confidence-message"
 id="confidenceMessage">
 記録を入力すると信頼度を判定します。
 </p>
+
+</div>
+
+<div class="runner-type-card">
+
+<p class="runner-title">
+あなたのランナータイプ
+</p>
+
+<div class="runner-header">
+
+<div class="runner-icon">
+🏃
+</div>
+
+<div>
+
+<p class="runner-name"
+id="runnerTypeName">
+スピード型
+</p>
+
+<p class="runner-description"
+id="runnerDescription">
+短い距離で高いスピードを発揮できるタイプです。
+</p>
+
+</div>
+
+</div>
+
+<div class="runner-stats">
+
+<div class="runner-stat">
+
+<p class="stat-label">
+スピード
+</p>
+
+<p class="stat-value"
+id="speedType">
+高い
+</p>
+
+</div>
+
+<div class="runner-stat">
+
+<p class="stat-label">
+持久力
+</p>
+
+<p class="stat-value"
+id="staminaType">
+やや低い
+</p>
+
+</div>
+
+<div class="runner-stat">
+
+<p class="stat-label">
+おすすめ
+</p>
+
+<p class="stat-value"
+id="recommendType">
+5km・10km
+</p>
+
+</div>
+
+</div>
 
 </div>
 
