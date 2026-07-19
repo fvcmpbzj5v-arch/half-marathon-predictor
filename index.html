@@ -1235,21 +1235,64 @@ function updateTimeExample(card){
         distanceSelect.selectedIndex
     ].textContent;
 
-    if(selectedText.includes("ハーフ")){
+    if(selectedText.includes("100m")){
 
-        example.textContent =
-        "例）12930 → 1:29:30";
+    example.textContent =
+    "例）1065 → 10.65";
 
-    }else if(selectedText.includes("フル")){
+}else if(selectedText.includes("200m")){
 
-        example.textContent =
-        "例）31158 → 3:11:58";
+    example.textContent =
+    "例）2187 → 21.87";
 
-    }else{
+}else if(selectedText.includes("400m")){
 
-        example.textContent =
-        "例）455525 → 45:55.25";
-    }
+    example.textContent =
+    "例）4865 → 48.65";
+
+}else if(selectedText.includes("800m")){
+
+    example.textContent =
+    "例）15342 → 1:53.42";
+
+}else if(selectedText.includes("1500m")){
+
+    example.textContent =
+    "例）45865 → 4:58.65";
+
+}else if(selectedText.includes("3000m")){
+
+    example.textContent =
+    "例）95832 → 9:58.32";
+
+}else if(
+    selectedText.includes("5000m") ||
+    selectedText.includes("5km")
+){
+
+    example.textContent =
+    "例）195832 → 19:58.32";
+
+}else if(selectedText.includes("10km")){
+
+    example.textContent =
+    "例）455525 → 45:55.25";
+
+}else if(selectedText.includes("ハーフ")){
+
+    example.textContent =
+    "例）12930 → 1:29:30";
+
+}else if(selectedText.includes("フル")){
+
+    example.textContent =
+    "例）31158 → 3:11:58";
+
+}else{
+
+    example.textContent =
+    "数字だけで入力できます";
+}
 }
 
 document
