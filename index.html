@@ -1372,6 +1372,9 @@ document.getElementById("errorMessage");
 const runnerTypeName =
 document.getElementById("runnerTypeName");
 
+const runnerDescription =
+document.getElementById("runnerDescription");
+
 showRecord2Button.addEventListener(
 "click",
 function(){
@@ -2046,20 +2049,29 @@ const enduranceLevel =
 getEnduranceLevel(records);
 
 let runnerTypeText = "";
+let runnerDescriptionText = "";
 
 if(speedLevel > enduranceLevel){
 
     runnerTypeText = "スピード型";
+    runnerDescriptionText =
+    "短い距離で高いスピードを発揮できるタイプです。";
 
 }else if(speedLevel < enduranceLevel){
 
     runnerTypeText = "持久型";
+    runnerDescriptionText =
+    "長い距離でもペースを維持しやすいタイプです。";
 
 }else{
 
     runnerTypeText = "バランス型";
+    runnerDescriptionText =
+    "スピードと持久力のバランスが良いタイプです。";
 
 }
+
+
 const firstInput =
 document.querySelector(
 　　'[data-record="1"] .time-input'
@@ -2208,6 +2220,9 @@ confidence.message;
 
 runnerTypeName.textContent =
 runnerTypeText;
+
+runnerDescription.textContent =
+runnerDescriptionText;
 
 result.style.display =
 "block";
