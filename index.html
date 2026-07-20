@@ -2315,27 +2315,6 @@ timeSeconds
 
 }
 
-function getVDOTList(records){
-
-    return records.map(function(record){
-
-        return{
-
-            distance:
-            record.distance,
-
-            vdot:
-            calculateVDOT(
-                record.distance,
-                record.totalSeconds
-            )
-
-        };
-
-    });
-
-}
-
 function getRecordVDOTs(records){
 
     const vdotList = [];
