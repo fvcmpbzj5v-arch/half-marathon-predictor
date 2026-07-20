@@ -1648,6 +1648,9 @@ document.getElementById("vo2maxValue");
 const vo2maxRank =
 document.getElementById("vo2maxRank");
 
+const ltPaceValue =
+document.getElementById("ltPaceValue");
+
 const removeRecord2Button =
 document.getElementById("removeRecord2");
 
@@ -2509,6 +2512,51 @@ function getVO2maxRank(vo2max){
     return "これから伸ばせます";
 }
 
+function calculateLTPaceFromVDOT(vdot){
+
+    if(
+        vdot === null ||
+        !Number.isFinite(vdot) ||
+        vdot <= 0
+    ){
+        return null;
+    }
+
+    const ltVO2 =
+    vdot * 0.88;
+
+    const a = 0.000104;
+    const b = 0.182258;
+    const c = -4.60 - ltVO2;
+
+    const discriminant =
+    b * b -
+    4 * a * c;
+
+    if(discriminant < 0){
+        return null;
+    }
+
+    const velocity =
+    (
+        -b +
+        Math.sqrt(discriminant)
+    ) /
+    (2 * a);
+
+    if(
+        !Number.isFinite(velocity) ||
+        velocity <= 0
+    ){
+        return null;
+    }
+
+    const secondsPerKm =
+    60000 / velocity;
+
+    return secondsPerKm;
+}
+
 predictButton.addEventListener(
 "click",
 function(){
@@ -2728,6 +2776,23 @@ if(averageVDOT !== null){
     vo2maxRank.textContent =
     getVO2maxRank(averageVDOT);
 
+    const ltPace =
+    calculateLTPaceFromVDOT(
+        averageVDOT
+    );
+
+    if(ltPace !== null){
+
+        ltPaceValue.textContent =
+        formatPace(ltPace);
+
+    }else{
+
+        ltPaceValue.textContent =
+        "--";
+
+    }
+
 }else{
 
     vo2maxValue.textContent =
@@ -2735,6 +2800,9 @@ if(averageVDOT !== null){
 
     vo2maxRank.textContent =
     "算出できません";
+
+    ltPaceValue.textContent =
+    "--";
 
 }
 
