@@ -2867,15 +2867,26 @@ getVDOTRank(averageVDOT);
 
     if(ltPace !== null){
 
-        ltPaceValue.textContent =
-        formatPace(ltPace);
+    ltPaceValue.textContent =
+    formatPace(ltPace);
 
-    }else{
+    const easyPace =
+    calculateEasyPaceRange(ltPace);
 
-        ltPaceValue.textContent =
-        "--";
+    easyPaceValue.textContent =
+    formatPace(easyPace.fast).replace(" /km","")
+    + "〜" +
+    formatPace(easyPace.slow);
 
-    }
+}else{
+
+    ltPaceValue.textContent =
+    "--";
+
+    easyPaceValue.textContent =
+    "--";
+
+}
 
 }else{
 
@@ -2886,6 +2897,9 @@ getVDOTRank(averageVDOT);
     "算出できません";
 
     ltPaceValue.textContent =
+    "--";
+
+    easyPaceValue.textContent =
     "--";
 
     vdotValue.textContent =
