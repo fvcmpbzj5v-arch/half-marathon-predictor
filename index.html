@@ -1642,6 +1642,12 @@ document.querySelector(".runner-type-card");
 const runnerIcon =
 document.getElementById("runnerIcon");
 
+const vo2maxValue =
+document.getElementById("vo2maxValue");
+
+const vo2maxRank =
+document.getElementById("vo2maxRank");
+
 const removeRecord2Button =
 document.getElementById("removeRecord2");
 
@@ -2462,6 +2468,47 @@ calculateVDOT(
 
 }
 
+function getAverageVDOT(vdotList){
+
+    if(vdotList.length === 0){
+        return null;
+    }
+
+    const total =
+    vdotList.reduce(
+        function(sum, record){
+
+            return sum + record.vdot;
+
+        },
+        0
+    );
+
+    return total / vdotList.length;
+}
+
+
+function getVO2maxRank(vo2max){
+
+    if(vo2max >= 60){
+        return "非常に高い";
+    }
+
+    if(vo2max >= 50){
+        return "高い";
+    }
+
+    if(vo2max >= 40){
+        return "やや高い";
+    }
+
+    if(vo2max >= 35){
+        return "標準的";
+    }
+
+    return "これから伸ばせます";
+}
+
 predictButton.addEventListener(
 "click",
 function(){
@@ -2668,6 +2715,29 @@ document.querySelector(
    predictedPace.textContent =
     "平均ペース " +
     formatPace(pace);
+
+
+const averageVDOT =
+getAverageVDOT(vdotList);
+
+if(averageVDOT !== null){
+
+    vo2maxValue.textContent =
+    averageVDOT.toFixed(1);
+
+    vo2maxRank.textContent =
+    getVO2maxRank(averageVDOT);
+
+}else{
+
+    vo2maxValue.textContent =
+    "--";
+
+    vo2maxRank.textContent =
+    "算出できません";
+
+}
+
 
 const confidence =
 calculateConfidence(records);
