@@ -2059,6 +2059,29 @@ function getEnduranceLevel(records){
 
 }
 
+function getLevelText(level){
+
+    switch(level){
+
+        case 5:
+            return "とても高い";
+
+        case 4:
+            return "高い";
+
+        case 3:
+            return "普通";
+
+        case 2:
+            return "やや低い";
+
+        default:
+            return "低い";
+
+    }
+
+}
+
 predictButton.addEventListener(
 "click",
 function(){
