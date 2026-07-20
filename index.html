@@ -2661,7 +2661,12 @@ function calculateEasyPaceRange(ltPace){
 
 }
 
-function calculateMarathonPace(ltPace, vdot){
+function calculateMarathonPace(
+    ltPace,
+    vdot,
+    speedLevel,
+    enduranceLevel
+){
 
     if(
         ltPace === null ||
@@ -2672,25 +2677,39 @@ function calculateMarathonPace(ltPace, vdot){
 
     let addSeconds;
 
-    if(vdot >= 60){
-
-        addSeconds = 15;
-
-    }else if(vdot >= 55){
-
-        addSeconds = 20;
-
-    }else if(vdot >= 50){
-
-        addSeconds = 25;
-
-    }else if(vdot >= 45){
+    if(vdot < 40){
 
         addSeconds = 30;
 
+    }else if(vdot < 45){
+
+        addSeconds = 27;
+
+    }else if(vdot < 50){
+
+        addSeconds = 24;
+
+    }else if(vdot < 55){
+
+        addSeconds = 21;
+
+    }else if(vdot < 60){
+
+        addSeconds = 18;
+
     }else{
 
-        addSeconds = 35;
+        addSeconds = 15;
+
+    }
+
+    if(speedLevel > enduranceLevel){
+
+        addSeconds += 1.5;
+
+    }else if(speedLevel < enduranceLevel){
+
+        addSeconds -= 1.5;
 
     }
 
@@ -2944,7 +2963,9 @@ getVDOTRank(averageVDOT);
 const marathonPace =
 calculateMarathonPace(
     ltPace,
-    averageVDOT
+    averageVDOT,
+    speedLevel,
+    enduranceLevel
 );
 
 console.log(
