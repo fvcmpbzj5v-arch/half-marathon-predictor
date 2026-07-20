@@ -2947,6 +2947,17 @@ calculateMarathonPace(
     averageVDOT
 );
 
+console.log(
+    "VDOT:",
+    averageVDOT,
+    "LT:",
+    ltPace,
+    "M:",
+    marathonPace,
+    "差:",
+    marathonPace - ltPace
+);
+
 marathonPaceValue.textContent =
 formatPace(marathonPace);
 
