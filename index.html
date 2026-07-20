@@ -1914,13 +1914,16 @@ function(){
     result.style.display =
     "none";
 
-    const records =
-    getVisibleRecords();
+   const records =
+　　getVisibleRecords();
 
-    const firstInput =
-    document.querySelector(
-    '[data-record="1"] .time-input'
-    );
+　　const speedLevel =
+　　getSpeedLevel(records);
+
+　　const firstInput =
+　　document.querySelector(
+　　'[data-record="1"] .time-input'
+　　);
 
     if(!firstInput.value.trim()){
 
