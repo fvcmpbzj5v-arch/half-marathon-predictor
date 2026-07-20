@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://fvcmpbzj5v-arch.github.io/half-marathon-predictor/sitemap.xml
