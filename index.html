@@ -2299,17 +2299,17 @@ function getRecordVDOTs(records){
     records.forEach(function(record){
 
         if(
-            !record.distance ||
-            !record.timeSeconds
-        ){
-            return;
-        }
+    !record.distance ||
+    !record.totalSeconds
+){
+    return;
+}
 
         const vdot =
-        calculateVDOT(
-            record.distance,
-            record.timeSeconds
-        );
+calculateVDOT(
+    record.distance,
+    record.totalSeconds
+);
 
         vdotList.push({
 
