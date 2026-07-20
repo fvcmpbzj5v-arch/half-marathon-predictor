@@ -2158,6 +2158,7 @@ getEnduranceLevel(records);
 let runnerTypeText = "";
 let runnerDescriptionText = "";
 let recommendText = "";
+let runnerIconName = "";
 
 runnerTypeCard.classList.remove(
     "speed-type",
@@ -2171,7 +2172,7 @@ if(speedLevel > enduranceLevel){
     runnerDescriptionText =
     "短い距離で高いスピードを発揮できるタイプです。";
     recommendText = "5km・10km";
-
+　　　runnerIconName = "zap";
     runnerTypeCard.classList.add(
         "speed-type"
     );
@@ -2182,6 +2183,7 @@ if(speedLevel > enduranceLevel){
     runnerDescriptionText =
     "長い距離でもペースを維持しやすいタイプです。";
     recommendText = "フル";
+    runnerIconName = "route";
 
     runnerTypeCard.classList.add(
         "endurance-type"
@@ -2193,6 +2195,7 @@ if(speedLevel > enduranceLevel){
     runnerDescriptionText =
     "スピードと持久力のバランスが良いタイプです。";
     recommendText = "ハーフ";
+    runnerIconName = "target";
 
     runnerTypeCard.classList.add(
         "balance-type"
@@ -2361,6 +2364,13 @@ getLevelText(enduranceLevel);
 
 recommendType.textContent =
 recommendText;
+
+runnerIcon.innerHTML =
+'<i data-lucide="' +
+runnerIconName +
+'"></i>';
+
+lucide.createIcons();
 
 result.style.display =
 "block";
