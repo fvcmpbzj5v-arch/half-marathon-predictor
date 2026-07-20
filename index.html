@@ -1903,22 +1903,61 @@ function getSpeedLevel(records){
         return 3;
     }
 
-    console.log(records);
-
-    let baseRecord = records[0];
+    let shortestRecord = records[0];
+    let longestRecord = records[0];
 
     records.forEach(function(record){
 
-        if(record.distance > baseRecord.distance){
-            baseRecord = record;
+        if(record.distance < shortestRecord.distance){
+            shortestRecord = record;
+        }
+
+        if(record.distance > longestRecord.distance){
+            longestRecord = record;
         }
 
     });
 
-    console.log(baseRecord);
+    if(
+        shortestRecord.distance ===
+        longestRecord.distance
+    ){
+        return 3;
+    }
 
-    return 3;
+    const predictedShortTime =
+    longestRecord.totalSeconds *
+    Math.pow(
+        shortestRecord.distance /
+        longestRecord.distance,
+        1.06
+    );
 
+    const errorRate =
+    (
+        shortestRecord.totalSeconds -
+        predictedShortTime
+    ) /
+    predictedShortTime *
+    100;
+
+    if(errorRate <= -2){
+        return 5;
+    }
+
+    if(errorRate <= -0.5){
+        return 4;
+    }
+
+    if(errorRate < 0.5){
+        return 3;
+    }
+
+    if(errorRate < 2){
+        return 2;
+    }
+
+    return 1;
 }
 
 predictButton.addEventListener(
