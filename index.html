@@ -2292,7 +2292,42 @@ timeSeconds
 
 }
 
-function getLevelText(level){
+function getRecordVDOTs(records){
+
+    const vdotList = [];
+
+    records.forEach(function(record){
+
+        if(
+            !record.distance ||
+            !record.timeSeconds
+        ){
+            return;
+        }
+
+        const vdot =
+        calculateVDOT(
+            record.distance,
+            record.timeSeconds
+        );
+
+        vdotList.push({
+
+            distance:
+            record.distance,
+
+            vdot:
+            vdot
+
+        });
+
+    });
+
+    return vdotList;
+
+}
+
+function getSpeedLevel(records){
 
     switch(level){
 
