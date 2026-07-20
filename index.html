@@ -1960,6 +1960,70 @@ function getSpeedLevel(records){
     return 1;
 }
 
+function getEnduranceLevel(records){
+
+    if(records.length < 2){
+        return 3;
+    }
+
+    let shortestRecord = records[0];
+    let longestRecord = records[0];
+
+    records.forEach(function(record){
+
+        if(record.distance < shortestRecord.distance){
+            shortestRecord = record;
+        }
+
+        if(record.distance > longestRecord.distance){
+            longestRecord = record;
+        }
+
+    });
+
+    if(
+        shortestRecord.distance ===
+        longestRecord.distance
+    ){
+        return 3;
+    }
+
+    const predictedShortTime =
+    longestRecord.totalSeconds *
+    Math.pow(
+        shortestRecord.distance /
+        longestRecord.distance,
+        1.06
+    );
+
+    const errorRate =
+    (
+        shortestRecord.totalSeconds -
+        predictedShortTime
+    ) /
+    predictedShortTime *
+    100;
+
+    if(errorRate >= 2){
+        return 5;
+    }
+
+    if(errorRate >= 0.5){
+        return 4;
+    }
+
+    if(errorRate > -0.5){
+        return 3;
+    }
+
+    if(errorRate > -2){
+        return 2;
+    }
+
+    return 1;
+
+}
+
 predictButton.addEventListener(
 "click",
 function(){
