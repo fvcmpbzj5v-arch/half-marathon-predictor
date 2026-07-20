@@ -1905,6 +1905,18 @@ function getSpeedLevel(records){
 
     console.log(records);
 
+    let baseRecord = records[0];
+
+    records.forEach(function(record){
+
+        if(record.distance > baseRecord.distance){
+            baseRecord = record;
+        }
+
+    });
+
+    console.log(baseRecord);
+
     return 3;
 
 }
