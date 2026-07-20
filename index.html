@@ -1706,6 +1706,9 @@ document.getElementById("vdotRank");
 const easyPaceValue =
 document.getElementById("easyPaceValue");
 
+const marathonPaceValue =
+document.getElementById("marathonPaceValue");
+
 const removeRecord2Button =
 document.getElementById("removeRecord2");
 
@@ -2658,6 +2661,19 @@ function calculateEasyPaceRange(ltPace){
 
 }
 
+function calculateMarathonPace(ltPace){
+
+    if(
+        ltPace === null ||
+        !Number.isFinite(ltPace)
+    ){
+        return null;
+    }
+
+    return ltPace + 15;
+
+}
+
 predictButton.addEventListener(
 "click",
 function(){
@@ -2901,6 +2917,12 @@ getVDOTRank(averageVDOT);
     + "〜" +
     formatPace(easyPace.slow);
 
+const marathonPace =
+calculateMarathonPace(ltPace);
+
+marathonPaceValue.textContent =
+formatPace(marathonPace);
+
 }else{
 
     ltPaceValue.textContent =
@@ -2908,6 +2930,9 @@ getVDOTRank(averageVDOT);
 
     easyPaceValue.textContent =
     "--";
+
+marathonPaceValue.textContent =
+"--";
 
 }
 
@@ -2923,6 +2948,9 @@ getVDOTRank(averageVDOT);
     "--";
 
     easyPaceValue.textContent =
+    "--";
+
+    marathonPaceValue.textContent =
     "--";
 
     vdotValue.textContent =
