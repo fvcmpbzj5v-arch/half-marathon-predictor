@@ -1902,130 +1902,151 @@ function calculateConfidence(records){
     };
 }
 
-function getSpeedLevel(records){
+function calculateRunnerLevels(records){
 
     if(records.length < 2){
-        return 3;
+
+        return {
+            speedLevel: 3,
+            enduranceLevel: 3
+        };
+
     }
 
-    let shortestRecord = records[0];
-    let longestRecord = records[0];
+    const errorRates = [];
 
-    records.forEach(function(record){
+    for(let i = 0; i < records.length; i++){
 
-        if(record.distance < shortestRecord.distance){
-            shortestRecord = record;
+        for(let j = i + 1; j < records.length; j++){
+
+            let shortRecord = records[i];
+            let longRecord = records[j];
+
+            if(
+                shortRecord.distance >
+                longRecord.distance
+            ){
+
+                const temporaryRecord =
+                shortRecord;
+
+                shortRecord =
+                longRecord;
+
+                longRecord =
+                temporaryRecord;
+
+            }
+
+            if(
+                shortRecord.distance ===
+                longRecord.distance
+            ){
+                continue;
+            }
+
+            const predictedLongTime =
+            shortRecord.totalSeconds *
+            Math.pow(
+                longRecord.distance /
+                shortRecord.distance,
+                1.06
+            );
+
+            const errorRate =
+            (
+                longRecord.totalSeconds -
+                predictedLongTime
+            ) /
+            predictedLongTime *
+            100;
+
+            errorRates.push(errorRate);
+
         }
 
-        if(record.distance > longestRecord.distance){
-            longestRecord = record;
-        }
-
-    });
-
-    if(
-        shortestRecord.distance ===
-        longestRecord.distance
-    ){
-        return 3;
     }
 
-    const predictedShortTime =
-    longestRecord.totalSeconds *
-    Math.pow(
-        shortestRecord.distance /
-        longestRecord.distance,
-        1.06
+    if(errorRates.length === 0){
+
+        return {
+            speedLevel: 3,
+            enduranceLevel: 3
+        };
+
+    }
+
+    const averageErrorRate =
+    errorRates.reduce(
+        function(total, errorRate){
+
+            return total + errorRate;
+
+        },
+        0
+    ) /
+    errorRates.length;
+
+    let speedLevel = 3;
+    let enduranceLevel = 3;
+
+    if(averageErrorRate >= 2){
+
+        speedLevel = 5;
+        enduranceLevel = 1;
+
+    }else if(averageErrorRate >= 0.5){
+
+        speedLevel = 4;
+        enduranceLevel = 2;
+
+    }else if(averageErrorRate > -0.5){
+
+        speedLevel = 3;
+        enduranceLevel = 3;
+
+    }else if(averageErrorRate > -2){
+
+        speedLevel = 2;
+        enduranceLevel = 4;
+
+    }else{
+
+        speedLevel = 1;
+        enduranceLevel = 5;
+
+    }
+
+    console.log(
+        "各組み合わせの誤差率",
+        errorRates
     );
 
-    const errorRate =
-    (
-        shortestRecord.totalSeconds -
-        predictedShortTime
-    ) /
-    predictedShortTime *
-    100;
+    console.log(
+        "平均誤差率",
+        averageErrorRate
+    );
 
-    if(errorRate <= -2){
-        return 5;
-    }
+    return {
+        speedLevel: speedLevel,
+        enduranceLevel: enduranceLevel
+    };
 
-    if(errorRate <= -0.5){
-        return 4;
-    }
+}
 
-    if(errorRate < 0.5){
-        return 3;
-    }
+function getSpeedLevel(records){
 
-    if(errorRate < 2){
-        return 2;
-    }
+    return calculateRunnerLevels(
+        records
+    ).speedLevel;
 
-    return 1;
 }
 
 function getEnduranceLevel(records){
 
-    if(records.length < 2){
-        return 3;
-    }
-
-    let shortestRecord = records[0];
-    let longestRecord = records[0];
-
-    records.forEach(function(record){
-
-        if(record.distance < shortestRecord.distance){
-            shortestRecord = record;
-        }
-
-        if(record.distance > longestRecord.distance){
-            longestRecord = record;
-        }
-
-    });
-
-    if(
-        shortestRecord.distance ===
-        longestRecord.distance
-    ){
-        return 3;
-    }
-
-    const predictedShortTime =
-    longestRecord.totalSeconds *
-    Math.pow(
-        shortestRecord.distance /
-        longestRecord.distance,
-        1.06
-    );
-
-    const errorRate =
-    (
-        shortestRecord.totalSeconds -
-        predictedShortTime
-    ) /
-    predictedShortTime *
-    100;
-
-    if(errorRate >= 2){
-        return 5;
-    }
-
-    if(errorRate >= 0.5){
-        return 4;
-    }
-
-    if(errorRate > -0.5){
-        return 3;
-    }
-
-    if(errorRate > -2){
-        return 2;
-    }
-
-    return 1;
+    return calculateRunnerLevels(
+        records
+    ).enduranceLevel;
 
 }
 
