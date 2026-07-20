@@ -1369,6 +1369,8 @@ document.getElementById("confidenceMessage");
 const errorMessage =
 document.getElementById("errorMessage");
 
+const runnerTypeName =
+document.getElementById("runnerTypeName");
 
 showRecord2Button.addEventListener(
 "click",
@@ -2043,22 +2045,21 @@ getSpeedLevel(records);
 const enduranceLevel =
 getEnduranceLevel(records);
 
-let runnerType = "";
+let runnerTypeText = "";
 
 if(speedLevel > enduranceLevel){
 
-    runnerType = "スピード型";
+    runnerTypeText = "スピード型";
 
 }else if(speedLevel < enduranceLevel){
 
-    runnerType = "持久型";
+    runnerTypeText = "持久型";
 
 }else{
 
-    runnerType = "バランス型";
+    runnerTypeText = "バランス型";
 
 }
-
 const firstInput =
 document.querySelector(
 　　'[data-record="1"] .time-input'
@@ -2205,8 +2206,11 @@ confidence.stars;
 confidenceMessage.textContent =
 confidence.message;
 
+runnerTypeName.textContent =
+runnerTypeText;
+
 result.style.display =
-    "block";
+"block";
 
     result.scrollIntoView({
         behavior:"smooth",
