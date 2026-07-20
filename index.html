@@ -1680,6 +1680,9 @@ document.getElementById("vdotValue");
 const vdotRank =
 document.getElementById("vdotRank");
 
+const easyPaceValue =
+document.getElementById("easyPaceValue");
+
 const removeRecord2Button =
 document.getElementById("removeRecord2");
 
@@ -2609,6 +2612,27 @@ function calculateLTPaceFromVDOT(vdot){
     60000 / velocity;
 
     return secondsPerKm;
+}
+
+function calculateEasyPaceRange(ltPace){
+
+    if(
+        ltPace === null ||
+        !Number.isFinite(ltPace)
+    ){
+        return null;
+    }
+
+    return{
+
+        fast:
+        ltPace + 50,
+
+        slow:
+        ltPace + 80
+
+    };
+
 }
 
 predictButton.addEventListener(
