@@ -1651,6 +1651,12 @@ document.getElementById("vo2maxRank");
 const ltPaceValue =
 document.getElementById("ltPaceValue");
 
+const vdotValue =
+document.getElementById("vdotValue");
+
+const vdotRank =
+document.getElementById("vdotRank");
+
 const removeRecord2Button =
 document.getElementById("removeRecord2");
 
@@ -2512,6 +2518,31 @@ function getVO2maxRank(vo2max){
     return "これから伸ばせます";
 }
 
+function getVDOTRank(vdot){
+
+    if(vdot >= 60){
+        return "エリート";
+    }
+
+    if(vdot >= 55){
+        return "上級";
+    }
+
+    if(vdot >= 50){
+        return "中上級";
+    }
+
+    if(vdot >= 45){
+        return "中級";
+    }
+
+    if(vdot >= 40){
+        return "初中級";
+    }
+
+    return "初級";
+}
+
 function calculateLTPaceFromVDOT(vdot){
 
     if(
@@ -2775,6 +2806,12 @@ if(averageVDOT !== null){
 
     vo2maxRank.textContent =
     getVO2maxRank(averageVDOT);
+    
+    vdotValue.textContent =
+averageVDOT.toFixed(1);
+
+vdotRank.textContent =
+getVDOTRank(averageVDOT);
 
     const ltPace =
     calculateLTPaceFromVDOT(
@@ -2802,6 +2839,12 @@ if(averageVDOT !== null){
     "算出できません";
 
     ltPaceValue.textContent =
+    "--";
+
+    vdotValue.textContent =
+    "--";
+
+    vdotRank.textContent =
     "--";
 
 }
