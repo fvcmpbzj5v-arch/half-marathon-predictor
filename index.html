@@ -2038,13 +2038,29 @@ function(){
 　　getVisibleRecords();
 
 　　const speedLevel =
-　　getSpeedLevel(records);
+getSpeedLevel(records);
 
-　　const enduranceLevel =
-　　getEnduranceLevel(records);
+const enduranceLevel =
+getEnduranceLevel(records);
 
-　　const firstInput =
-　　document.querySelector(
+let runnerType = "";
+
+if(speedLevel > enduranceLevel){
+
+    runnerType = "スピード型";
+
+}else if(speedLevel < enduranceLevel){
+
+    runnerType = "持久型";
+
+}else{
+
+    runnerType = "バランス型";
+
+}
+
+const firstInput =
+document.querySelector(
 　　'[data-record="1"] .time-input'
 　　);
 
