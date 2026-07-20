@@ -305,6 +305,25 @@ main{
     font-size:1.15rem;
 }
 
+.remove-record{
+    margin-left:auto;
+    padding:7px 12px;
+
+    border:1px solid #f0b8b8;
+    border-radius:8px;
+
+    background:#fff6f6;
+    color:#c43d3d;
+
+    font-size:0.75rem;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.remove-record:active{
+    transform:translateY(1px);
+}
+
 .hidden{
     display:none;
 }
@@ -1027,6 +1046,13 @@ data-record="2">
     <i data-lucide="footprints"></i>
 </div>
 
+<button
+type="button"
+class="remove-record"
+id="removeRecord2">
+削除
+</button>
+
 </div>
 
 <label class="field-label">
@@ -1111,9 +1137,18 @@ data-record="3">
 
 <div class="record-header">
 
+<div class="record-header">
+
 <div class="record-icon" aria-hidden="true">
     <i data-lucide="footprints"></i>
 </div>
+
+<button
+type="button"
+class="remove-record"
+id="removeRecord3">
+削除
+</button>
 
 </div>
 
@@ -1609,6 +1644,12 @@ document.querySelector(".runner-type-card");
 const runnerIcon =
 document.getElementById("runnerIcon");
 
+const removeRecord2Button =
+document.getElementById("removeRecord2");
+
+const removeRecord3Button =
+document.getElementById("removeRecord3");
+
 showRecord2Button.addEventListener(
 "click",
 function(){
@@ -1629,6 +1670,60 @@ function(){
     showRecord3Button.classList.add("hidden");
 }
 );
+
+
+// ここから追加
+
+removeRecord3Button.addEventListener(
+"click",
+function(){
+
+    const timeInput =
+    record3Area.querySelector(".time-input");
+
+    if(timeInput){
+        timeInput.value = "";
+    }
+
+    record3Area.classList.add("hidden");
+
+    showRecord3Button.classList.remove("hidden");
+
+    result.style.display = "none";
+}
+);
+
+
+removeRecord2Button.addEventListener(
+"click",
+function(){
+
+    const record2Input =
+    record2Area.querySelector(".time-input");
+
+    const record3Input =
+    record3Area.querySelector(".time-input");
+
+    if(record2Input){
+        record2Input.value = "";
+    }
+
+    if(record3Input){
+        record3Input.value = "";
+    }
+
+    record2Area.classList.add("hidden");
+    record3Area.classList.add("hidden");
+
+    showRecord2Button.classList.remove("hidden");
+    showRecord3Button.classList.remove("hidden");
+
+    result.style.display = "none";
+}
+);
+
+// 追加ここまで
+
 
 
 function formatRoadTimeInput(value){
