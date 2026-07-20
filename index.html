@@ -2661,7 +2661,7 @@ function calculateEasyPaceRange(ltPace){
 
 }
 
-function calculateMarathonPace(ltPace){
+function calculateMarathonPace(ltPace, vdot){
 
     if(
         ltPace === null ||
@@ -2670,7 +2670,31 @@ function calculateMarathonPace(ltPace){
         return null;
     }
 
-    return ltPace + 15;
+    let addSeconds;
+
+    if(vdot >= 60){
+
+        addSeconds = 15;
+
+    }else if(vdot >= 55){
+
+        addSeconds = 20;
+
+    }else if(vdot >= 50){
+
+        addSeconds = 25;
+
+    }else if(vdot >= 45){
+
+        addSeconds = 30;
+
+    }else{
+
+        addSeconds = 35;
+
+    }
+
+    return ltPace + addSeconds;
 
 }
 
@@ -2918,7 +2942,10 @@ getVDOTRank(averageVDOT);
     formatPace(easyPace.slow);
 
 const marathonPace =
-calculateMarathonPace(ltPace);
+calculateMarathonPace(
+    ltPace,
+    averageVDOT
+);
 
 marathonPaceValue.textContent =
 formatPace(marathonPace);
