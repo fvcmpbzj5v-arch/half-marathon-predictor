@@ -905,6 +905,336 @@ footer{
 
 }
 
+/* ==============================
+   おすすめ練習メニュー
+============================== */
+
+.training-menu-section{
+    display:none;
+
+    margin-top:22px;
+
+    overflow:hidden;
+
+    background:#ffffff;
+
+    border:2px solid #1761e5;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 10px 25px rgba(20,73,166,0.14);
+}
+
+.training-menu-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:18px 16px;
+
+    color:#ffffff;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1761e5,
+        #0844ae
+    );
+}
+
+.training-menu-main-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:50px;
+    height:50px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#ffffff;
+    color:#1761e5;
+}
+
+.training-menu-main-icon svg{
+    width:27px;
+    height:27px;
+    stroke-width:2.3;
+}
+
+.training-menu-header-text h2{
+    margin:0;
+
+    font-size:20px;
+    font-weight:800;
+    line-height:1.3;
+}
+
+.training-menu-header-text p{
+    margin:4px 0 0;
+
+    font-size:12px;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+.training-menu-body{
+    padding:14px;
+}
+
+.training-category{
+    padding:16px 12px 12px;
+
+    border-radius:16px;
+}
+
+.training-category + .training-category{
+    margin-top:14px;
+}
+
+/* スピード＝青 */
+
+.training-category.speed-training{
+    border:1.5px solid #bfdbfe;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #eff6ff
+    );
+}
+
+/* 持久力＝オレンジ */
+
+.training-category.endurance-training{
+    border:1.5px solid #fed7aa;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #fff7ed
+    );
+}
+
+.training-category-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:14px;
+}
+
+.training-category-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:48px;
+    height:48px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+}
+
+.training-category-icon svg{
+    width:26px;
+    height:26px;
+    stroke:#ffffff;
+    stroke-width:2.4;
+}
+
+.speed-training .training-category-icon{
+    background:#3b82f6;
+}
+
+.endurance-training .training-category-icon{
+    background:#f97316;
+}
+
+.training-category-text h3{
+    margin:0;
+
+    font-size:18px;
+    font-weight:800;
+    line-height:1.3;
+}
+
+.speed-training .training-category-text h3{
+    color:#2563eb;
+}
+
+.endurance-training .training-category-text h3{
+    color:#ea580c;
+}
+
+.training-category-text p{
+    margin:4px 0 0;
+
+    color:#4b5563;
+
+    font-size:11px;
+    line-height:1.5;
+}
+
+.training-list{
+    overflow:hidden;
+
+    background:#ffffff;
+
+    border-radius:13px;
+}
+
+.speed-training .training-list{
+    border:1px solid #bfdbfe;
+}
+
+.endurance-training .training-list{
+    border:1px solid #fed7aa;
+}
+
+.training-item{
+    display:grid;
+
+    grid-template-columns:
+    minmax(0,1fr)
+    auto;
+
+    align-items:center;
+    gap:10px;
+
+    min-height:62px;
+
+    padding:11px 12px;
+}
+
+.training-item + .training-item{
+    border-top:1px solid #e2e8f0;
+}
+
+.training-name{
+    color:#17213a;
+
+    font-size:13px;
+    font-weight:800;
+    line-height:1.45;
+}
+
+.training-pace{
+    padding:7px 9px;
+
+    border-radius:8px;
+
+    font-size:11px;
+    font-weight:800;
+    line-height:1.3;
+
+    text-align:center;
+    white-space:nowrap;
+}
+
+.speed-training .training-pace{
+    color:#2563eb;
+    background:#eaf2ff;
+}
+
+.endurance-training .training-pace{
+    color:#ea580c;
+    background:#fff0e3;
+}
+
+.training-menu-note{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+
+    margin-top:14px;
+    padding:12px;
+
+    color:#45526a;
+
+    background:#f0f6ff;
+
+    border-radius:12px;
+
+    font-size:11px;
+    line-height:1.7;
+}
+
+.training-note-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:20px;
+    height:20px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#1761e5;
+    color:#ffffff;
+
+    font-size:13px;
+    font-weight:800;
+}
+
+@media(max-width:390px){
+
+    .training-menu-header{
+        padding:16px 13px;
+    }
+
+    .training-menu-main-icon{
+        width:45px;
+        height:45px;
+    }
+
+    .training-menu-header-text h2{
+        font-size:18px;
+    }
+
+    .training-menu-body{
+        padding:11px;
+    }
+
+    .training-category{
+        padding:14px 9px 10px;
+    }
+
+    .training-category-icon{
+        width:43px;
+        height:43px;
+    }
+
+    .training-category-text h3{
+        font-size:16px;
+    }
+
+    .training-item{
+        grid-template-columns:
+        minmax(0,1fr)
+        minmax(93px,auto);
+
+        padding:10px;
+    }
+
+    .training-name{
+        font-size:12px;
+    }
+
+    .training-pace{
+        padding:6px 7px;
+        font-size:10px;
+    }
+}
+
 </style>
 <script src="https://unpkg.com/lucide@1.24.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -1550,6 +1880,204 @@ id="marathonPaceValue">
 
 </section>
 
+
+<section
+class="training-menu-section"
+id="trainingMenuSection"
+>
+
+<div class="training-menu-header">
+
+<div class="training-menu-main-icon">
+
+<i data-lucide="dumbbell"></i>
+
+</div>
+
+<div class="training-menu-header-text">
+
+<h2>
+おすすめ練習メニュー
+</h2>
+
+<p>
+目的に合わせた練習で、効率よく力を伸ばしましょう。
+</p>
+
+</div>
+
+</div>
+
+
+<div class="training-menu-body">
+
+<!-- スピード強化練習 -->
+
+<div class="training-category speed-training">
+
+<div class="training-category-header">
+
+<div class="training-category-icon">
+
+<i data-lucide="zap"></i>
+
+</div>
+
+<div class="training-category-text">
+
+<h3>
+スピード強化練習
+</h3>
+
+<p>
+スピードやVO₂max向上に効果的な練習です。
+</p>
+
+</div>
+
+</div>
+
+
+<div class="training-list">
+
+<div class="training-item">
+
+<div class="training-name">
+200mインターバル×8〜12本
+</div>
+
+<div class="training-pace">
+1500m〜3000mペース
+</div>
+
+</div>
+
+
+<div class="training-item">
+
+<div class="training-name">
+400mインターバル×8〜10本
+</div>
+
+<div class="training-pace">
+3〜5kmペース
+</div>
+
+</div>
+
+
+<div class="training-item">
+
+<div class="training-name">
+1000mインターバル×4〜6本
+</div>
+
+<div class="training-pace">
+10kmペース
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 持久力強化練習 -->
+
+<div class="training-category endurance-training">
+
+<div class="training-category-header">
+
+<div class="training-category-icon">
+
+<i data-lucide="activity"></i>
+
+</div>
+
+<div class="training-category-text">
+
+<h3>
+持久力強化練習
+</h3>
+
+<p>
+持久力やスタミナ向上に効果的な練習です。
+</p>
+
+</div>
+
+</div>
+
+
+<div class="training-list">
+
+<div class="training-item">
+
+<div class="training-name">
+LT走20〜30分
+</div>
+
+<div class="training-pace">
+LTペース
+</div>
+
+</div>
+
+
+<div class="training-item">
+
+<div class="training-name">
+Mペース走8〜15km
+</div>
+
+<div class="training-pace">
+Mペース
+</div>
+
+</div>
+
+
+<div class="training-item">
+
+<div class="training-name">
+ロング走90〜150分
+</div>
+
+<div class="training-pace">
+Eジョグペース
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="training-menu-note">
+
+<div class="training-note-icon">
+i
+</div>
+
+<div>
+
+※ ペースはあくまで目安です。体調やコンディションに合わせて調整してください。
+
+<br>
+
+※ ウォームアップ・クールダウンを忘れずに行いましょう。
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
 <section class="tips">
 
 <h2>
@@ -1709,6 +2237,11 @@ document.getElementById("easyPaceValue");
 const marathonPaceValue =
 document.getElementById("marathonPaceValue");
 
+const trainingMenuSection =
+document.getElementById(
+    "trainingMenuSection"
+);
+
 const removeRecord2Button =
 document.getElementById("removeRecord2");
 
@@ -1755,6 +2288,10 @@ function(){
     showRecord3Button.classList.remove("hidden");
 
     result.style.display = "none";
+    
+    trainingMenuSection.style.display =
+　　　"none";
+    
 }
 );
 
@@ -1784,6 +2321,9 @@ function(){
     showRecord3Button.classList.remove("hidden");
 
     result.style.display = "none";
+    
+    trainingMenuSection.style.display =
+　　　"none";
 }
 );
 
@@ -2726,6 +3266,9 @@ function(){
 
     result.style.display =
     "none";
+    
+    trainingMenuSection.style.display =
+"none";
 
 const records =
 getVisibleRecords();
